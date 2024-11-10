@@ -1,3 +1,6 @@
+
+
+
 function generateCarInspector(index) {
    const container = document.createElement("div");
    container.id = "carInspector";

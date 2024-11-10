@@ -1,5 +1,12 @@
 
 <!DOCTYPE html>
+
+<script>
+   const urlParams = window.location.search;
+   const iframe = document.getElementById('iframe');
+   iframe.src = `CAR/index.html${urlParams}`;
+</script>
+
 <html>
    <head>
       <style>
