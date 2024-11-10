@@ -1,6 +1,3 @@
-
-
-
 function generateCarInspector(index) {
    const container = document.createElement("div");
    container.id = "carInspector";
@@ -27,6 +24,18 @@ function generateCarInspector(index) {
 
    Visualizer.addEventListeners(c);
    const d = document.createElement("div");
+
+   // Add mouse tracking to the decision boundary canvas
+   d.addEventListener("mousemove", (e) => {
+      const rect = d.getBoundingClientRect();
+      d._mouseX = e.clientX - rect.left;
+      d._mouseY = e.clientY - rect.top;
+   });
+   
+   d.addEventListener("mouseleave", () => {
+      d._mouseX = undefined;
+      d._mouseY = undefined;
+   });
 
    const s_1 = document.createElement("img");
    const holder = document.createElement("div");
@@ -89,13 +98,11 @@ function generateCarInspector(index) {
    l2.classList.add("checkbox-label");
    l2.appendChild(s2);
    checkBoxes.appendChild(_c2);
-   checkBoxes.appendChild(l2);
    s3.classList.add("custom-checkbox");
    l3 = document.createElement("label");
    l3.classList.add("checkbox-label");
    l3.appendChild(s3);
    checkBoxes.appendChild(_c3);
-   checkBoxes.appendChild(l3);
    s4.classList.add("custom-checkbox");
    l4 = document.createElement("label");
    l4.classList.add("checkbox-label");

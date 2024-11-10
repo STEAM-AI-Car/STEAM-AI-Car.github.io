@@ -539,14 +539,14 @@
          setInterfaceOptions(carInfo, defaultOptions);
          
          document.addEventListener("keydown", (event) => {
-            /*if (event.key.toLowerCase() == "g") {
+            if (event.key.toLowerCase() == "g") {
                toggleGenetic(0);
-            } */
-            /*if (event.key.toLowerCase() == "w") {
+            } 
+            if (event.key.toLowerCase() == "w") {
                toggleWorld();
-            } */
+            } 
          });
-         /*
+         
             document.addEventListener("keydown", (event) => {
                 if (event.key === "1") {
                     selectCar(0);
@@ -564,7 +564,7 @@
                     viewport.zoomOut();
                 }
             });
-            */
+            
          const nnCanvas = document.createElement("canvas");
          nnCanvas.height =
             window.innerHeight -

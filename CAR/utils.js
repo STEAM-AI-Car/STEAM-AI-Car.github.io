@@ -166,6 +166,69 @@ function drawArrow2(
    ctx.stroke();
    ctx.fillStyle = color;
    ctx.fill();
+
+   // Add hover detection and X rendering for fwd_d scenario
+   if (window.location.search.includes("fwd_d")) {
+      // Check if mouse is near the bottom circle
+      const mouseX = ctx.canvas._mouseX || 0;
+      const mouseY = ctx.canvas._mouseY || 0;
+      const dist = Math.hypot(mouseX - tail.x, mouseY - tail.y);
+      
+      if (dist < size/2) {
+         // Draw red X on the left side
+         ctx.save();
+         ctx.strokeStyle = "red";
+         ctx.lineWidth = 3;
+         const xSize = 12;
+         const xOffset = size/2 + 5;
+         
+         // First line of X
+         ctx.beginPath();
+         ctx.moveTo(tail.x - xOffset - xSize/2, tail.y - xSize/2);
+         ctx.lineTo(tail.x - xOffset + xSize/2, tail.y + xSize/2);
+         ctx.stroke();
+         
+         // Second line of X
+         ctx.beginPath();
+         ctx.moveTo(tail.x - xOffset - xSize/2, tail.y + xSize/2);
+         ctx.lineTo(tail.x - xOffset + xSize/2, tail.y - xSize/2);
+         ctx.stroke();
+         
+         ctx.restore();
+      }
+   }
+
+   // Only for fwd_d scenario and bottom circle
+   if (window.location.search.includes("fwd_d") && tail.y > ctx.canvas.height/2) {
+      // Get mouse position from canvas element
+      const mouseX = ctx.canvas.parentElement._mouseX;
+      const mouseY = ctx.canvas.parentElement._mouseY;
+      
+      if (mouseX !== undefined && mouseY !== undefined) {
+         const dist = Math.hypot(mouseX - tail.x, mouseY - tail.y);
+         
+         if (dist < 20) { // Radius for hover detection
+            // Draw red X
+            ctx.save();
+            ctx.strokeStyle = "red";
+            ctx.lineWidth = 3;
+            const xOffset = 25; // Distance from circle
+            const xSize = 15; // Size of X
+            
+            ctx.beginPath();
+            ctx.moveTo(tail.x - xOffset - xSize/2, tail.y - xSize/2);
+            ctx.lineTo(tail.x - xOffset + xSize/2, tail.y + xSize/2);
+            ctx.stroke();
+            
+            ctx.beginPath(); 
+            ctx.moveTo(tail.x - xOffset - xSize/2, tail.y + xSize/2);
+            ctx.lineTo(tail.x - xOffset + xSize/2, tail.y - xSize/2);
+            ctx.stroke();
+            
+            ctx.restore();
+         }
+      }
+   }
 }
 /*
 
@@ -178,7 +241,7 @@ function add(p1, p2) {
 }
 
 function subtract(p1, p2) {
-   return { x: p1.x - p2.x, y: p1.y - p2.y };
+   return { x: p1.x - p2.x, y: p2.y - p2.y };
 }
 
 function dot(p1, p2) {

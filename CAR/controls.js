@@ -25,34 +25,46 @@ class Controls {
          }
          switch (event.key) {
             case "ArrowLeft":
+            case "a":  // lowercase a only
                this.left = true;
                break;
             case "ArrowRight":
+            case "d":  // lowercase d only
                this.right = true;
                break;
             case "ArrowUp":
+            case "w":  // lowercase w only
                this.forward = true;
                break;
             case "ArrowDown":
+            case "s":  // lowercase s only
                this.reverse = true;
+               break;
+            case "r":  // lowercase r only
+               location.reload();
                break;
          }
       };
+
       document.onkeyup = (event) => {
          if(!manual){
             return;
          }
          switch (event.key) {
             case "ArrowLeft":
+            case "a":  // lowercase a only
                this.left = false;
                break;
-            case "ArrowRight":
+            case "ArrowRight": 
+            case "d":  // lowercase d only
                this.right = false;
                break;
             case "ArrowUp":
+            case "w":  // lowercase w only
                this.forward = false;
                break;
             case "ArrowDown":
+            case "s":  // lowercase s only
                this.reverse = false;
                break;
          }
