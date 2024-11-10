@@ -1,11 +1,4 @@
-
 <!DOCTYPE html>
-
-<script>
-   const urlParams = window.location.search;
-   const iframe = document.getElementById('iframe');
-   iframe.src = `CAR/index.html${urlParams}`;
-</script>
 
 <html>
    <head>
@@ -22,6 +15,10 @@
          // JavaScript code to set focus on the iframe
          const iframe = document.getElementById('iframe');
          iframe.focus();
+
+         // Add URL parameters to the iframe src
+         const urlParams = window.location.search;
+         iframe.src = `CAR/index.html${urlParams}`;
       </script>
    </body>
-</html>	
+</html>
